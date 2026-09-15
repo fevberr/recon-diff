@@ -1,15 +1,33 @@
-
 # recon-diff
+<img src="https://p16-tiktok-dm-sticker-sign-sg.ibyteimg.com/tos-alisg-i-dhq7zx4c1p-sg/d179a29e560642bba3707aa2ec9babd8~tplv-dhq7zx4c1p-full.awebp?rk3s=00edd399&x-expires=1792029789&x-signature=qrJJe26DGlzonOoaKdczYDcF0BE%3D" alt="RAHHHH">
 
-<img src="https://p16-tiktok-dm-sticker-sign-sg.ibyteimg.com/tos-alisg-i-dhq7zx4c1p-sg/d179a29e560642bba3707aa2ec9babd8~tplv-dhq7zx4c1p-full.awebp?rk3s=00edd399&x-expires=1792029789&x-signature=qrJJe26DGlzonOoaKdczYDcF0BE%3D" alt="RAHHHH"> by fevber (super coolz guy btw)
+**Passive attack surface change detector.**  
+crt.sh · DNS · Wayback CDX — no wordlists
 
-Passive attack surface change detector. crt.sh, DNS, Wayback CDX. No wordlists.
+---
+
+**Stack**
+
+<p>
+  <img src="https://cdn.simpleicons.org/python" alt="Python" width="20">
+  <img src="https://cdn.simpleicons.org/gnubash" alt="Shell" width="20">
+  <img src="https://cdn.simpleicons.org/git" alt="Git" width="20">
+  <img src="https://cdn.simpleicons.org/html5" alt="HTML5" width="20">
+  <img src="https://cdn.simpleicons.org/cloudflare" alt="Cloudflare" width="20">
+  <img src="https://cdn.simpleicons.org/grafana" alt="Grafana" width="20">
+  <img src="https://cdn.simpleicons.org/gnometerminal" alt="Terminal" width="20">
+  <img src="https://cdn.simpleicons.org/json" alt="JSON" width="20">
+</p>
+
+---
+
+**Author** — [fevberr](https://github.com/fevberr) *(super coolz guy btw)*
 
 ---
 
 ## Install
 
-<img src="https://cdn.simpleicons.org/python" alt="python" width="24"> **pip install**
+<img src="https://cdn.simpleicons.org/python" alt="python" width="24">
 
 ```powershell
 git clone https://github.com/fevberr/recon-diff.git
@@ -23,7 +41,7 @@ pip install -e .
 
 ## Use
 
-<img src="https://cdn.simpleicons.org/gnubash" alt="shell" width="24"> **cli**
+<img src="https://cdn.simpleicons.org/gnubash" alt="shell" width="24">
 
 ```powershell
 recon-diff scan example.com --store .\snapshots
@@ -35,22 +53,22 @@ recon-diff dashboard
 
 ---
 
-## Options
+## Commands
 
-<img src="https://cdn.simpleicons.org/gnometerminal" alt="terminal" width="24"> **flags**
+<img src="https://cdn.simpleicons.org/gnometerminal" alt="terminal" width="24">
 
-```powershell
-recon-diff scan <domain> --store <path>     # snapshot target
-recon-diff diff <domain> --store <path>     # compare last two snapshots
-recon-diff report <domain> --out <file>     # export HTML report
-recon-diff dashboard                        # launch live view
-```
+| Command | What it does |
+|---|---|
+| `recon-diff scan <domain> --store <path>` | Snapshot the target's current attack surface |
+| `recon-diff diff <domain> --store <path>` | Compare the two most recent snapshots |
+| `recon-diff report <domain> --out <file>` | Export an HTML report |
+| `recon-diff dashboard` | Launch the live view |
 
 ---
 
 ## Scan
 
-<img src="https://cdn.simpleicons.org/cloudflare" alt="scan" width="24"> **snapshot**
+<img src="https://cdn.simpleicons.org/cloudflare" alt="cloudflare" width="24">
 
 ```powershell
 recon-diff scan example.com --store .\snapshots
@@ -60,7 +78,7 @@ recon-diff scan example.com --store .\snapshots
 
 ## Diff
 
-<img src="https://cdn.simpleicons.org/git" alt="diff" width="24"> **compare**
+<img src="https://cdn.simpleicons.org/git" alt="git" width="24">
 
 ```powershell
 recon-diff diff example.com --store .\snapshots
@@ -70,7 +88,7 @@ recon-diff diff example.com --store .\snapshots
 
 ## Report
 
-<img src="https://cdn.simpleicons.org/html5" alt="report" width="24"> **html**
+<img src="https://cdn.simpleicons.org/html5" alt="html" width="24">
 
 ```powershell
 recon-diff report example.com --out report.html
@@ -80,7 +98,7 @@ recon-diff report example.com --out report.html
 
 ## Dashboard
 
-<img src="https://cdn.simpleicons.org/grafana" alt="dashboard" width="24"> **live**
+<img src="https://cdn.simpleicons.org/grafana" alt="grafana" width="24">
 
 ```powershell
 recon-diff dashboard
@@ -88,9 +106,22 @@ recon-diff dashboard
 
 ---
 
+## Data sources
+
+<img src="https://cdn.simpleicons.org/json" alt="json" width="24">
+
+- **crt.sh** — certificate transparency logs, for subdomain discovery
+- **DNS** — A / AAAA / CNAME / MX / TXT / NS records
+- **Wayback CDX** — historical URL enumeration
+
+---
+
 ## License
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
+MIT © 2026 fevberr
+
 ```
 MIT License
 
@@ -113,3 +144,4 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+```
