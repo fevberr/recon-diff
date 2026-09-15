@@ -15,8 +15,6 @@ crt.sh · DNS · Wayback CDX — no wordlists
   <img src="https://cdn.simpleicons.org/sqlite" alt="SQLite" width="20">
   <img src="https://cdn.simpleicons.org/docker" alt="Docker" width="20">
   <img src="https://cdn.simpleicons.org/githubactions" alt="GitHub Actions" width="20">
-  <img src="https://cdn.simpleicons.org/slack" alt="Slack" width="20">
-  <img src="https://cdn.simpleicons.org/discord" alt="Discord" width="20">
   <img src="https://cdn.simpleicons.org/json" alt="JSON" width="20">
 </p>
 
