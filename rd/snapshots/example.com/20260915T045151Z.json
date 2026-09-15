@@ -1,0 +1,260 @@
+{
+  "target": "example.com",
+  "timestamp": "2026-09-15T04:51:51.215024Z",
+  "duration_ms": 3888,
+  "findings": [
+    {
+      "kind": "subdomain",
+      "key": "dev.example.com",
+      "value": {
+        "host": "dev.example.com"
+      },
+      "score": 0
+    },
+    {
+      "kind": "subdomain",
+      "key": "example.com",
+      "value": {
+        "host": "example.com"
+      },
+      "score": 0
+    },
+    {
+      "kind": "subdomain",
+      "key": "m.example.com",
+      "value": {
+        "host": "m.example.com"
+      },
+      "score": 0
+    },
+    {
+      "kind": "subdomain",
+      "key": "products.example.com",
+      "value": {
+        "host": "products.example.com"
+      },
+      "score": 0
+    },
+    {
+      "kind": "subdomain",
+      "key": "support.example.com",
+      "value": {
+        "host": "support.example.com"
+      },
+      "score": 0
+    },
+    {
+      "kind": "subdomain",
+      "key": "www.example.com",
+      "value": {
+        "host": "www.example.com"
+      },
+      "score": 0
+    },
+    {
+      "kind": "port",
+      "key": "example.com:80",
+      "value": {
+        "host": "example.com",
+        "port": 80,
+        "banner": ""
+      },
+      "score": 0
+    },
+    {
+      "kind": "port",
+      "key": "example.com:443",
+      "value": {
+        "host": "example.com",
+        "port": 443,
+        "banner": ""
+      },
+      "score": 0
+    },
+    {
+      "kind": "port",
+      "key": "example.com:8080",
+      "value": {
+        "host": "example.com",
+        "port": 8080,
+        "banner": ""
+      },
+      "score": 0
+    },
+    {
+      "kind": "port",
+      "key": "example.com:8443",
+      "value": {
+        "host": "example.com",
+        "port": 8443,
+        "banner": ""
+      },
+      "score": 0
+    },
+    {
+      "kind": "port",
+      "key": "www.example.com:80",
+      "value": {
+        "host": "www.example.com",
+        "port": 80,
+        "banner": ""
+      },
+      "score": 0
+    },
+    {
+      "kind": "port",
+      "key": "www.example.com:443",
+      "value": {
+        "host": "www.example.com",
+        "port": 443,
+        "banner": ""
+      },
+      "score": 0
+    },
+    {
+      "kind": "port",
+      "key": "www.example.com:8080",
+      "value": {
+        "host": "www.example.com",
+        "port": 8080,
+        "banner": ""
+      },
+      "score": 0
+    },
+    {
+      "kind": "port",
+      "key": "www.example.com:8443",
+      "value": {
+        "host": "www.example.com",
+        "port": 8443,
+        "banner": ""
+      },
+      "score": 0
+    },
+    {
+      "kind": "http",
+      "key": "example.com",
+      "value": {
+        "status": 200,
+        "headers": {
+          "server": "cloudflare",
+          "cf-ray": "a3b504b30c8a19be-GUA"
+        },
+        "title": "Example Domain",
+        "body_hash": "ff67a9d764d6a236",
+        "server": "cloudflare"
+      },
+      "score": 0
+    },
+    {
+      "kind": "http",
+      "key": "www.example.com",
+      "value": {
+        "status": 200,
+        "headers": {
+          "server": "cloudflare",
+          "cf-ray": "a3b504b31bc331c5-GUA"
+        },
+        "title": "Example Domain",
+        "body_hash": "ff67a9d764d6a236",
+        "server": "cloudflare"
+      },
+      "score": 0
+    },
+    {
+      "kind": "tls",
+      "key": "example.com",
+      "value": {
+        "subject": {},
+        "issuer": {},
+        "notAfter": null,
+        "protocol": "TLSv1.3",
+        "expired": false,
+        "self_signed": true
+      },
+      "score": 0
+    },
+    {
+      "kind": "tls",
+      "key": "www.example.com",
+      "value": {
+        "subject": {},
+        "issuer": {},
+        "notAfter": null,
+        "protocol": "TLSv1.3",
+        "expired": false,
+        "self_signed": true
+      },
+      "score": 0
+    },
+    {
+      "kind": "headers",
+      "key": "example.com",
+      "value": {
+        "host": "example.com",
+        "missing": [
+          "content-security-policy",
+          "strict-transport-security",
+          "x-frame-options",
+          "x-content-type-options",
+          "referrer-policy",
+          "permissions-policy"
+        ]
+      },
+      "score": 0
+    },
+    {
+      "kind": "headers",
+      "key": "www.example.com",
+      "value": {
+        "host": "www.example.com",
+        "missing": [
+          "content-security-policy",
+          "strict-transport-security",
+          "x-frame-options",
+          "x-content-type-options",
+          "referrer-policy",
+          "permissions-policy"
+        ]
+      },
+      "score": 0
+    },
+    {
+      "kind": "tech",
+      "key": "example.com:cloudflare",
+      "value": {
+        "name": "cloudflare",
+        "host": "example.com"
+      },
+      "score": 0
+    },
+    {
+      "kind": "tech",
+      "key": "www.example.com:cloudflare",
+      "value": {
+        "name": "cloudflare",
+        "host": "www.example.com"
+      },
+      "score": 0
+    },
+    {
+      "kind": "waf",
+      "key": "example.com",
+      "value": {
+        "name": "cloudflare",
+        "host": "example.com"
+      },
+      "score": 0
+    },
+    {
+      "kind": "waf",
+      "key": "www.example.com",
+      "value": {
+        "name": "cloudflare",
+        "host": "www.example.com"
+      },
+      "score": 0
+    }
+  ],
+  "errors": []
+}
