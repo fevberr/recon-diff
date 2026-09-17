@@ -1,6 +1,6 @@
 # recon-diff
 
-<img src="https://p16-tiktok-dm-sticker-sign-sg.ibyteimg.com/tos-alisg-i-dhq7zx4c1p-sg/d179a29e560642bba3707aa2ec9babd8~tplv-dhq7zx4c1p-full.awebp?rk3s=00edd399&x-expires=1792029789&x-signature=qrJJe26DGlzonOoaKdczYDcF0BE%3D" alt="RAHHHH">
+<img src="https://p16-tiktok-dm-sticker-sign-sg.ibyteimg.com/tos-alisg-i-dhq7zx4c1p-sg/d179a29e560642bba3707aa2ec9babd8~tplv-dhq7zx4c1p-full.awebp?rk3s=00edd399&x-expires=1792029789&x-signature=qrJ[...]
 
 **Passive attack surface change detector.**  
 crt.sh · DNS · Wayback CDX — no wordlists
@@ -25,20 +25,35 @@ crt.sh · DNS · Wayback CDX — no wordlists
 
 ## Install
 
+### Linux/macOS
+
 ```bash
 git clone https://github.com/fevberr/recon-diff.git
 cd recon-diff/rd
 python -m venv .venv
-source .venv/bin/activate  # Windows: .venv\Scripts\Activate.ps1
+source .venv/bin/activate
+python -m pip install --upgrade pip
 pip install -e .
 ```
+
+### Windows (PowerShell)
+
+```powershell
+git clone https://github.com/fevberr/recon-diff.git
+cd .\recon-diff\rd
+python -m venv .venv
+.\.venv\Scripts\Activate.ps1
+python -m pip install --upgrade pip
+pip install -e .
+```
+
+> If `source` fails, you're in PowerShell, not Bash. Use `./.venv/Scripts/Activate.ps1` instead.
 
 > Install from the `rd/` directory, where the package configuration lives.
 
 ## Quick start
 
 ```bash
-rd scan example.com --store ./snapshots
 rd scan example.com --store ./snapshots
 rd difftwo example.com --store ./snapshots
 rd report example.com --out report.html
@@ -47,9 +62,9 @@ rd dashboard
 
 Run `rd --help` for all available options.
 
-### PowerShell
+### PowerShell note
 
-PowerShell may alias `rd` to `Remove-Item`. Use the executable directly:
+PowerShell may treat `rd` as the built-in `Remove-Item` alias. If that happens, use the executable directly:
 
 ```powershell
 .\.venv\Scripts\rd.exe scan example.com --store .\snapshots
@@ -76,7 +91,7 @@ Remove-Item Alias:rd
 
 - Certificate transparency via [crt.sh](https://crt.sh/)
 - DNS records
-- Historical URLs via [Wayback CDX](https://web.archive.org/cdx/)
+- Historical URLs via [Wayback CDX](https://web.archive.org/web/)
 
 ## License
 
