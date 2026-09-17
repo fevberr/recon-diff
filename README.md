@@ -46,19 +46,39 @@ This makes it useful for monitoring drift in a target’s external footprint ove
 
 ## Install
 
-Choose the instructions for your operating system.
-
 ### Windows PowerShell
+
+The Python project is inside the `rd` folder. Copy and paste these commands from the folder that contains `recon-diff`:
 
 ```powershell
 git clone https://github.com/fevberr/recon-diff.git
-Set-Location .\recon-diff\rd
+cd .\recon-diff\rd
 python -m venv .venv
 .\.venv\Scripts\Activate.ps1
 python -m pip install -e .
 ```
 
-If PowerShell does not allow the activation script, run this once in the same window and activate again:
+After the install finishes, verify it:
+
+```powershell
+.\.venv\Scripts\rd.exe --help
+```
+
+If you already cloned the repository, do not run `git clone` again. Start here instead:
+
+```powershell
+cd .\recon-diff\rd
+.\.venv\Scripts\Activate.ps1
+python -m pip install -e .
+```
+
+If you are already inside `C:\Users\...\recon-diff`, use this instead:
+
+```powershell
+cd .\rd
+```
+
+If PowerShell blocks activation, run this once in the current PowerShell window and then activate again:
 
 ```powershell
 Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
@@ -77,11 +97,15 @@ python -m pip install -e .
 
 ## Quick start
 
-Create a first snapshot:
-
 ### Windows PowerShell
 
-PowerShell uses `rd` as an alias for `Remove-Item`, so run the executable directly:
+PowerShell has a built-in `rd` alias for `Remove-Item`. Use the installed executable so PowerShell does not run the wrong command:
+
+```powershell
+.\.venv\Scripts\rd.exe scan example.com --store .\snapshots
+```
+
+Run the command again later to compare the new snapshot with the previous one:
 
 ```powershell
 .\.venv\Scripts\rd.exe scan example.com --store .\snapshots
@@ -93,13 +117,11 @@ PowerShell uses `rd` as an alias for `Remove-Item`, so run the executable direct
 rd scan example.com --store ./snapshots
 ```
 
-Run the scan again later to compare it with the previous snapshot:
+Run the command again later to compare the new snapshot with the previous one:
 
-```text
+```bash
 rd scan example.com --store ./snapshots
 ```
-
-On Windows, use `..\.venv\Scripts\rd.exe` instead of `rd` in the command above.
 
 ## Commands
 
@@ -109,30 +131,12 @@ On Windows, use `..\.venv\Scripts\rd.exe` instead of `rd` in the command above.
 | `rd difftwo <domain>` | Compare the two most recent snapshots |
 | `rd targets` | List domains with saved snapshots |
 
-All commands support a custom snapshot directory:
+On Windows, replace `rd` with `.\.venv\Scripts\rd.exe`.
 
-```text
---store ./snapshots
-```
-
-On Windows PowerShell, use:
-
-```powershell
---store .\snapshots
-```
-
-Run the help command to see every available option.
-
-### Windows
+Run the help command to see every available option:
 
 ```powershell
 .\.venv\Scripts\rd.exe --help
-```
-
-### Linux/macOS
-
-```bash
-rd --help
 ```
 
 ## Data sources
