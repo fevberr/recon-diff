@@ -1,8 +1,48 @@
 # recon-diff
 
-**Passive attack-surface change detector for domains.**
+<img src="https://p16-tiktok-dm-sticker-sign-sg.ibyteimg.com/tos-alisg-i-dhq7zx4c1p-sg/d179a29e560642bba3707aa2ec9babd8~tplv-dhq7zx4c1p-full.awebp?rk3s=00edd399&x-expires=1792029789&x-signature=qrJJe26DGlzonOoaKdczYDcF0BE%3D" alt="RAHHHH" />
 
-recon-diff collects public information from certificate transparency, DNS, and the Wayback Machine, then compares snapshots so you can see what changed over time.
+Passive attack surface change detection.
+
+crt.sh • DNS • Wayback CDX — no wordlists.
+
+---
+
+## Overview
+
+`recon-diff` watches a target over time and reports what changed in its exposed attack surface without needing a wordlist or active enumeration workflow.
+
+It tracks changes across public data sources like:
+
+- crt.sh
+- DNS records
+- Wayback CDX entries
+
+This makes it useful for monitoring drift in a target’s external footprint over time.
+
+---
+
+## Built with
+
+<p>
+  <img src="https://cdn.simpleicons.org/python" alt="Python" width="20">
+  <img src="https://cdn.simpleicons.org/gnubash" alt="Shell" width="20">
+  <img src="https://cdn.simpleicons.org/git" alt="Git" width="20">
+  <img src="https://cdn.simpleicons.org/sqlite" alt="SQLite" width="20">
+  <img src="https://cdn.simpleicons.org/docker" alt="Docker" width="20">
+  <img src="https://cdn.simpleicons.org/githubactions" alt="GitHub Actions" width="20">
+  <img src="https://cdn.simpleicons.org/json" alt="JSON" width="20">
+</p>
+
+---
+
+## Author
+
+[fevberr](https://github.com/fevberr)
+
+> super coolz guy btw
+
+---
 
 ## Install
 
@@ -59,7 +99,7 @@ Run the scan again later to compare it with the previous snapshot:
 rd scan example.com --store ./snapshots
 ```
 
-On Windows, use `.\.venv\Scripts\rd.exe` instead of `rd` in the command above.
+On Windows, use `..\.venv\Scripts\rd.exe` instead of `rd` in the command above.
 
 ## Commands
 
