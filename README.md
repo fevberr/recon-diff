@@ -1,155 +1,225 @@
-
 # recon-diff
-<img src="https://p16-tiktok-dm-sticker-sign-sg.ibyteimg.com/tos-alisg-i-dhq7zx4c1p-sg/d179a29e560642bba3707aa2ec9babd8~tplv-dhq7zx4c1p-full.awebp?rk3s=00edd399&x-expires=1792029789&x-signature=qrJJe26DGlzonOoaKdczYDcF0BE%3D" alt="RAHHHH">
 
-**Passive attack surface change detector.**  
-crt.sh · DNS · Wayback CDX — no wordlists
+**Passive attack-surface change detector.**
 
----
-**Used**
+`recon-diff` collects passive signals from certificate transparency, DNS, and Wayback CDX, then stores timestamped snapshots so that changes can be reviewed over time.
 
-<p>
-  <img src="https://cdn.simpleicons.org/python" alt="Python" width="20">
-  <img src="https://cdn.simpleicons.org/gnubash" alt="Shell" width="20">
-  <img src="https://cdn.simpleicons.org/git" alt="Git" width="20">
-  <img src="https://cdn.simpleicons.org/sqlite" alt="SQLite" width="20">
-  <img src="https://cdn.simpleicons.org/docker" alt="Docker" width="20">
-  <img src="https://cdn.simpleicons.org/githubactions" alt="GitHub Actions" width="20">
-  <img src="https://cdn.simpleicons.org/json" alt="JSON" width="20">
-</p>
+> Use this tool only on domains you own or are authorized to assess.
 
----
+## Requirements
 
-**Author** — [fevberr](https://github.com/fevberr) *(super coolz guy btw)*
+- Windows PowerShell, macOS, or Linux
+- Python 3.10 or newer
+- Git
+- Network access for the passive data sources
 
----
+## Installation
 
-> **Heads up:** The install path and CLI differ from what you might expect. The packaging file lives in `rd/`, the installed command is `rd` (not `recon-diff`), and the diff subcommand is `difftwo` (not `diff`). Details below.
+The Python package is located in the `rd` directory, so install it from there.
 
----
+### Windows PowerShell
 
-## Install
-
-<img src="https://cdn.simpleicons.org/python" alt="python" width="24">
+Run these commands from any directory:
 
 ```powershell
 git clone https://github.com/fevberr/recon-diff.git
-cd recon-diff\rd
+Set-Location .\recon-diff\rd
+
 python -m venv .venv
 .\.venv\Scripts\Activate.ps1
-pip install -e .
+python -m pip install --upgrade pip
+python -m pip install -e .
 ```
 
-> On macOS/Linux, activate with `source .venv/bin/activate` instead.
->
-> Run `pip install -e .` from **inside `rd/`** — that's where `pyproject.toml` lives. From the repo root it fails with *"does not appear to be a Python project"*.
-
----
-
-## Use
-
-<img src="https://cdn.simpleicons.org/gnubash" alt="shell" width="24">
-
-The installed command is **`rd`**, not `recon-diff`. PowerShell aliases `rd` to `Remove-Item`, so call the executable by full path (or remove the alias first).
+If PowerShell blocks activation, you can either run the executable directly or allow scripts for your user account:
 
 ```powershell
-..\.venv\Scripts\rd.exe scan example.com --store .\snapshots
-..\.venv\Scripts\rd.exe scan example.com --store .\snapshots
-..\.venv\Scripts\rd.exe difftwo example.com --store .\snapshots
-..\.venv\Scripts\rd.exe report example.com --out report.html
-..\.venv\Scripts\rd.exe dashboard
+Set-ExecutionPolicy -Scope CurrentUser RemoteSigned
+.\.venv\Scripts\Activate.ps1
 ```
 
-> Prefer just `rd`? Run `Remove-Item Alias:rd` once per session.
-> `python -m rd` will **not** work — the package has no `__main__.py`.
+### macOS/Linux
 
----
+```bash
+git clone https://github.com/fevberr/recon-diff.git
+cd recon-diff/rd
+
+python3 -m venv .venv
+source .venv/bin/activate
+python -m pip install --upgrade pip
+python -m pip install -e .
+```
+
+## Run the CLI
+
+The installed command is `rd`. The package does **not** provide a `recon-diff` command.
+
+### Windows PowerShell
+
+When the virtual environment is activated, use `rd.exe`:
+
+```powershell
+rd.exe --help
+rd.exe scan example.com --store .\snapshots
+```
+
+You can also use the executable without activating the environment:
+
+```powershell
+.\.venv\Scripts\rd.exe scan example.com --store .\snapshots
+```
+
+PowerShell has a built-in `rd` alias for `Remove-Item`, so `rd.exe` is intentional. Do not type the PowerShell prompt itself (`(.venv) PS ...>`) as part of the command.
+
+### macOS/Linux
+
+```bash
+./.venv/bin/rd --help
+./.venv/bin/rd scan example.com --store ./snapshots
+```
 
 ## Commands
 
-<img src="https://cdn.simpleicons.org/gnometerminal" alt="terminal" width="24">
-
-| Command | What it does |
+| Command | Description |
 |---|---|
-| `rd scan <domain> --store <path>` | Snapshot the target's current attack surface |
-| `rd difftwo <domain> --store <path>` | Compare the two most recent snapshots |
-| `rd report <domain> --out <file>` | Export an HTML report |
-| `rd dashboard` | Launch the live view |
+| `rd scan <domain> --store <path>` | Collect and save a snapshot of the target's passive attack surface. |
+| `rd difftwo <domain> --store <path>` | Compare the two most recent snapshots. Requires at least two scans. |
+| `rd targets` | Show the targets supported by the installed CLI. |
 
-> Run `rd --help` to list the actual available commands. The names above reflect the installed CLI; earlier docs listed `diff`, which the tool rejects in favor of `difftwo`.
+Run `rd.exe --help` on Windows or `rd --help` on macOS/Linux to see the commands available in your installed version.
 
----
+## Example workflow
 
-## Scan
-
-<img src="https://cdn.simpleicons.org/cloudflare" alt="cloudflare" width="24">
+Run two scans at different times, then compare them:
 
 ```powershell
-..\.venv\Scripts\rd.exe scan example.com --store .\snapshots
+# Windows PowerShell
+rd.exe scan example.com --store .\snapshots
+# Wait, then run another scan
+rd.exe scan example.com --store .\snapshots
+rd.exe difftwo example.com --store .\snapshots
 ```
 
-Writes a timestamped snapshot to `snapshots\<domain>\<UTC-timestamp>.json`.
+A successful scan prints the snapshot path, for example:
 
----
+```text
+-> snapshots\example.com\20260917T034631Z.json
+```
 
-## Diff
+## Windows troubleshooting
 
-<img src="https://cdn.simpleicons.org/git" alt="git" width="24">
+### `Fatal error in launcher` refers to the wrong Python path
+
+If the error contains a path such as:
+
+```text
+C:\Users\...\a\rd\.venv\Scripts\python.exe
+```
+
+but your project is actually under:
+
+```text
+C:\Users\...\a\recon-diff\rd
+```
+
+then the virtual environment was moved or was created at a different location. Virtual environments contain launchers with absolute paths and should be recreated after moving them.
+
+From `recon-diff\rd`, run:
 
 ```powershell
-..\.venv\Scripts\rd.exe difftwo example.com --store .\snapshots
+# Leave the old environment, if it is active
+deactivate
+
+# Remove only the broken local virtual environment
+Remove-Item -Recurse -Force .\.venv
+
+# Create a new environment at the current project location
+python -m venv .venv
+.\.venv\Scripts\Activate.ps1
+
+# Use python -m pip so the pip executable cannot point at another environment
+python -m pip install --upgrade pip
+python -m pip install -e .
+
+# Confirm the interpreter and CLI use this .venv
+python -c "import sys; print(sys.executable)"
+Get-Command rd.exe
+rd.exe --help
 ```
 
-Compares the two most recent snapshots. Requires at least two scans.
+The interpreter path should end with:
 
----
+```text
+recon-diff\rd\.venv\Scripts\python.exe
+```
 
-## Report
+### `pip install -e .` fails with a launcher error
 
-<img src="https://cdn.simpleicons.org/html5" alt="html" width="24">
+Use this instead of `pip install -e .`:
 
 ```powershell
-..\.venv\Scripts\rd.exe report example.com --out report.html
+python -m pip install -e .
 ```
 
----
+This explicitly runs pip from the Python interpreter in the active environment.
 
-## Dashboard
+### A directory path is reported as an unknown command
 
-<img src="https://cdn.simpleicons.org/grafana" alt="grafana" width="24">
+This is not a valid command:
 
 ```powershell
-..\.venv\Scripts\rd.exe dashboard
+C:\Users\...\recon-diff\rd
 ```
 
----
+Change directories with `cd` or `Set-Location`:
+
+```powershell
+cd C:\Users\...\recon-diff\rd
+# or
+Set-Location C:\Users\...\recon-diff\rd
+```
+
+### `rd` invokes `Remove-Item`
+
+Use the executable extension:
+
+```powershell
+rd.exe --help
+```
+
+Alternatively, remove the alias for the current PowerShell session:
+
+```powershell
+Remove-Item Alias:rd -ErrorAction SilentlyContinue
+rd --help
+```
+
+### Do not paste the prompt
+
+Only paste the command after the prompt. For example, paste this:
+
+```powershell
+rd.exe scan example.com --store .\snapshots
+```
+
+Do not paste this entire displayed line:
+
+```text
+(.venv) PS C:\Users\...\recon-diff\rd> rd.exe scan example.com --store .\snapshots
+```
+
+## Development
+
+The project uses an editable install, so source changes are immediately available after installation:
+
+```powershell
+python -m pip install -e .
+```
+
+The CLI entry point is defined in `pyproject.toml` as `rd = "rd.cli:app"`.
 
 ## License
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-
 MIT © 2026 fevberr
 
-```
-MIT License
-
-Copyright (c) 2026 fevberr
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-```
+See [LICENSE](LICENSE) for the complete license text.
