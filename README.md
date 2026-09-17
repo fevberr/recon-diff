@@ -1,8 +1,27 @@
 # recon-diff
 
-**Track changes to a domain's public attack surface over time.**
+<img src="https://p16-tiktok-dm-sticker-sign-sg.ibyteimg.com/tos-alisg-i-dhq7zx4c1p-sg/d179a29e560642bba3707aa2ec9babd8~tplv-dhq7zx4c1p-full.awebp?rk3s=00edd399&x-expires=1792029789&x-signature=qrJJe26DGlzonOoaKdczYDcF0BE%3D" alt="RAHHHH">
 
-`recon-diff` uses passive sources—**crt.sh, DNS, and Wayback CDX**—to capture snapshots and show what changed. No wordlists. No active scanning.
+**Passive attack surface change detector.**  
+crt.sh · DNS · Wayback CDX — no wordlists
+
+---
+
+## Used
+
+<p>
+  <img src="https://cdn.simpleicons.org/python" alt="Python" width="20">
+  <img src="https://cdn.simpleicons.org/gnubash" alt="Shell" width="20">
+  <img src="https://cdn.simpleicons.org/git" alt="Git" width="20">
+  <img src="https://cdn.simpleicons.org/sqlite" alt="SQLite" width="20">
+  <img src="https://cdn.simpleicons.org/docker" alt="Docker" width="20">
+  <img src="https://cdn.simpleicons.org/githubactions" alt="GitHub Actions" width="20">
+  <img src="https://cdn.simpleicons.org/json" alt="JSON" width="20">
+</p>
+
+---
+
+**Author** — [fevberr](https://github.com/fevberr) *(super coolz guy btw)*
 
 ## Install
 
