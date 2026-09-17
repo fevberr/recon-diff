@@ -69,16 +69,6 @@ python -m venv .venv
 pip install -e .
 ```
 
-On macOS/Linux:
-
-```bash
-git clone https://github.com/fevberr/recon-diff.git
-cd recon-diff/rd
-python -m venv .venv
-source .venv/bin/activate
-pip install -e .
-```
-
 > Run `pip install -e .` from inside `rd/`.  
 > The project configuration is located there, and running it from the repository root will fail with:
 > “does not appear to be a Python project”
