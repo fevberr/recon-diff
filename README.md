@@ -80,4 +80,4 @@ Remove-Item Alias:rd
 
 ## License
 
-[MIT](LICENSE) © 2026 [fevberr](https://github.com/fevberr)
+[MIT](https://github.com/fevberr/recon-diff/blob/main/LICENSE) © 2026 [fevberr](https://github.com/fevberr)
